@@ -1,4 +1,5 @@
-define(["jquery","template","bootstrap"],function ($,template) {
+define(["jquery","template","util","bootstrap"],function ($,template,util) {
+	util.setMenu(location.pathname);
 	$.ajax({
 		type:"get",
 		url:"/api/teacher",
@@ -13,7 +14,7 @@ define(["jquery","template","bootstrap"],function ($,template) {
 
 		}
 	})
-
+	//查看讲师功能
 	function viewTeacher(){
 		$("#teacherListInfo").find('.preview').click(function(){
 			//获取对应行的id值
@@ -35,7 +36,7 @@ define(["jquery","template","bootstrap"],function ($,template) {
 			// return false;				
 		});
 	}
-
+	//启用和注销讲师
 	function enableTeacher(){
 		$("#teacherListInfo").find('.edteacher').click(function(){
 			var that=this;
@@ -46,7 +47,7 @@ define(["jquery","template","bootstrap"],function ($,template) {
 			$.ajax({
 				type:"post",
 				url:"/api/teacher/handle",
-				data:{tc_id:tcId,tc_status:tcStatus},
+				data:{tc_id: tcId, tc_status: tcStatus},
 				dataType:"json",
 				success:function(data){
 					if(data.code==200){

@@ -19,9 +19,7 @@ define(["jquery","template","nprogress","cookie"],function($,template,nprogress)
 
     //获取请求路径(域名后面的信息)
     var pathname=location.pathname;
-    // 侧边栏点击时变色
-    $(".aside .navs a").removeClass("active");
-    $(".aside .navs a[href='"+pathname+"']").addClass("active");
+   
     //判断用户是否已经登录要通过PHPSESSID来判断
     if(pathname!="/login" && !$.cookie("PHPSESSID")){
         //没有登录的情况下要重新跳转到登录页面
